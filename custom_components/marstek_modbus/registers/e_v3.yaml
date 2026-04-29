@@ -1144,9 +1144,10 @@ CYCLE_SENSOR_DEFINITIONS:
         icon: "mdi:counter"
         category: diagnostic
         state_class: measurement
+        mode: quotient
         dependency_keys:
-            discharge: total_discharging_energy
-            capacity: battery_total_energy
+            dividend: total_discharging_energy
+            divisor: battery_total_energy
 
 VERSION_SENSOR_DEFINITIONS:
     firmware_version:
