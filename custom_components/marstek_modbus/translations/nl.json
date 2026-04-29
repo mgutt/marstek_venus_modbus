@@ -146,17 +146,23 @@
       "internal_mos2_temperature": {
         "name": "Interne MOS2 Temperatuur"
       },
-      "ac_voltage": {
-        "name": "AC-spanning"
+      "inverter_voltage": {
+        "name": "Omvormer-spanning"
       },
-      "ac_current": {
-        "name": "AC-stroom"
+      "inverter_current": {
+        "name": "Omvormer-stroom"
+      },
+      "inverter_power": {
+        "name": "Omvormer-vermogen"
+      },
+      "inverter_frequency": {
+        "name": "Omvormer-frequentie"
       },
       "ac_power": {
         "name": "AC-vermogen"
       },
-      "ac_frequency": {
-        "name": "AC-frequentie"
+      "ac_current": {
+        "name": "AC-stroom"
       },
       "total_charging_energy": {
         "name": "Totale Oplaadenergie"

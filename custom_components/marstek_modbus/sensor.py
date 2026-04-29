@@ -34,16 +34,13 @@ async def async_setup_entry(
         (MarstekSensor, coordinator.SENSOR_DEFINITIONS),
         (MarstekEfficiencySensor, coordinator.EFFICIENCY_SENSOR_DEFINITIONS),
         (MarstekStoredEnergySensor, coordinator.STORED_ENERGY_SENSOR_DEFINITIONS),
+        (MarstekQuotientSensor, coordinator.QUOTIENT_SENSOR_DEFINITIONS),
+        (MarstekDifferenceSensor, coordinator.DIFFERENCE_SENSOR_DEFINITIONS),
+        (MarstekDifferenceQuotientSensor, coordinator.DIFFERENCE_QUOTIENT_SENSOR_DEFINITIONS),
         (MarstekVersionSensor, coordinator.VERSION_SENSOR_DEFINITIONS),
     )
     for entity_cls, definitions in sensor_groups:
         entities.extend(entity_cls(coordinator, definition) for definition in definitions)
-
-    # Arithmetic sensors: map mode to appropriate class
-    for definition in coordinator.CYCLE_SENSOR_DEFINITIONS:
-        mode = definition.get("mode", "quotient")
-        sensor_cls = _ARITHMETIC_SENSOR_MAP.get(mode, MarstekQuotientSensor)
-        entities.append(sensor_cls(coordinator, definition))
 
     # Add all entities to Home Assistant
     async_add_entities(entities)
@@ -549,14 +546,6 @@ class MarstekDifferenceQuotientSensor(MarstekCalculatedSensor):
         if minuend is None or subtrahend is None or divisor in (None, 0):
             return None
         return round((minuend - subtrahend) / divisor, 2)
-
-
-# Map mode string to sensor class
-_ARITHMETIC_SENSOR_MAP = {
-    "quotient": MarstekQuotientSensor,
-    "difference": MarstekDifferenceSensor,
-    "difference_quotient": MarstekDifferenceQuotientSensor,
-}
 
 
 class MarstekVersionSensor(MarstekCalculatedSensor):

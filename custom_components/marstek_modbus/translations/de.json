@@ -137,17 +137,23 @@
       "internal_mos2_temperature": {
         "name": "Interne MOS2-Temperatur"
       },
-      "ac_voltage": {
-        "name": "AC-Spannung"
+      "inverter_voltage": {
+        "name": "Wechselrichter-Spannung"
       },
-      "ac_current": {
-        "name": "AC-Strom"
+      "inverter_current": {
+        "name": "Wechselrichter-Strom"
+      },
+      "inverter_power": {
+        "name": "Wechselrichter-Leistung"
+      },
+      "inverter_frequency": {
+        "name": "Wechselrichter-Frequenz"
       },
       "ac_power": {
         "name": "AC-Leistung"
       },
-      "ac_frequency": {
-        "name": "AC-Frequenz"
+      "ac_current": {
+        "name": "AC-Strom"
       },
       "total_charging_energy": {
         "name": "Gesamte Ladeenergie"
