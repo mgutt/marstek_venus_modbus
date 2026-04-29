@@ -93,7 +93,7 @@
         "name": "Kommunikationsmodul-Firmware"
       },
       "ble_mac_address": {
-        "name": "Bluetooth-MAC-Adresse"
+        "name": "Bluetooth-MAC"
       },
       "battery_soc": {
         "name": "SoC Batterie"
