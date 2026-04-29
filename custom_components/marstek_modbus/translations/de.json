@@ -137,6 +137,9 @@
       "internal_mos2_temperature": {
         "name": "Interne MOS2-Temperatur"
       },
+      "ac_voltage": {
+        "name": "AC-Spannung"
+      },
       "inverter_voltage": {
         "name": "Wechselrichter-Spannung"
       },

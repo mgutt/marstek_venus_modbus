@@ -146,8 +146,11 @@
       "internal_mos2_temperature": {
         "name": "Interne MOS2 Temperatuur"
       },
+      "ac_voltage": {
+        "name": "AC-spanning"
+      },
       "inverter_voltage": {
-        "name": "Omvormer-spanning"
+        "name": "Omvormer spanning"
       },
       "inverter_current": {
         "name": "Omvormer-stroom"

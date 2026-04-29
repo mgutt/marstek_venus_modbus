@@ -140,6 +140,9 @@
       "internal_mos2_temperature": {
         "name": "Internal MOS2 Temperature"
       },
+      "ac_voltage": {
+        "name": "AC Voltage"
+      },
       "inverter_voltage": {
         "name": "Inverter Voltage"
       },

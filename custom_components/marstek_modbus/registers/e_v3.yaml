@@ -105,6 +105,16 @@ SENSOR_DEFINITIONS:
         data_type: uint16
         precision: 3
         scan_interval: low
+    ac_voltage:
+        register: 36103
+        scale: 0.1
+        unit: V
+        device_class: voltage
+        state_class: measurement
+        enabled_by_default: false
+        data_type: uint16
+        precision: 1
+        scan_interval: medium
     battery_voltage:
         register: 32100
         scale: 0.01
