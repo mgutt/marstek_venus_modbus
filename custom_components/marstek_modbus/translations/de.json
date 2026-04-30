@@ -455,6 +455,18 @@
       "alarm_status": {
         "name": "Alarmstatus"
       },
+      "bms_charge_current_limit": {
+        "name": "Maximaler BMS-Ladestrom"
+      },
+      "bms_discharge_current_limit": {
+        "name": "Maximaler BMS-Entladestrom"
+      },
+      "charge_power_limit": {
+        "name": "Maximale Ladeleistung"
+      },
+      "discharge_power_limit": {
+        "name": "Maximale Entladeleistung"
+      },
       "modbus_address": {
         "name": "Modbus-Adresse"
       },
