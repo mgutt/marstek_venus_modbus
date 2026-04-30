@@ -80,8 +80,17 @@
       "ems_version": {
         "name": "EMS Version"
       },
+      "firmware_version": {
+        "name": "Firmware Version"
+      },
       "vms_version": {
         "name": "VMS Version"
+      },
+      "ems_sub_version": {
+        "name": "EMS Sub-Version"
+      },
+      "vns_version": {
+        "name": "VNS Version"
       },
       "comm_module_firmware": {
         "name": "Communication Module Firmware"
@@ -440,6 +449,7 @@
       "alarm_status": {
         "name": "Alarm Status"
       },
+
       "modbus_address": {
         "name": "Modbus Address"
       },
@@ -455,6 +465,35 @@
       "wifi_signal_strength": {
         "name": "WiFi Signal Strength"
       },
+      "wifi_ssid": {
+        "name": "WiFi SSID"
+      },
+      "device_ip": {
+        "name": "Device IP Address"
+      },
+      "gateway_ip": {
+        "name": "Gateway IP Address"
+      },
+
+      "bms_temperature_1": {
+        "name": "BMS Temperature 1"
+      },
+      "bms_temperature_2": {
+        "name": "BMS Temperature 2"
+      },
+      "cell_pack_temperature_1": {
+        "name": "Cell Pack Temperature 1"
+      },
+      "cell_pack_temperature_2": {
+        "name": "Cell Pack Temperature 2"
+      },
+      "cell_pack_temperature_3": {
+        "name": "Cell Pack Temperature 3"
+      },
+      "cell_pack_temperature_4": {
+        "name": "Cell Pack Temperature 4"
+      },
+
       "round_trip_efficiency_total": {
         "name": "Round Trip Efficiency Total"
       },
@@ -503,7 +542,6 @@
       "mppt4_power": {
         "name": "MPPT4 Power"
       },
-
       "bluetooth_status": {
         "name": "Bluetooth Status",
         "state": {
