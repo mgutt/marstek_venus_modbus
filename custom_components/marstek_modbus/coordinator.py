@@ -64,6 +64,7 @@ class MarstekCoordinator(DataUpdateCoordinator):
         self.BUTTON_DEFINITIONS = []
         self.EFFICIENCY_SENSOR_DEFINITIONS = []
         self.STORED_ENERGY_SENSOR_DEFINITIONS = []
+        self.VERSION_SENSOR_DEFINITIONS = []
         self.CYCLE_SENSOR_DEFINITIONS = []
 
         # Combine all sensor definitions for polling
@@ -233,6 +234,7 @@ class MarstekCoordinator(DataUpdateCoordinator):
             self.BUTTON_DEFINITIONS = data.get("BUTTON_DEFINITIONS", [])
             self.EFFICIENCY_SENSOR_DEFINITIONS = data.get("EFFICIENCY_SENSOR_DEFINITIONS", [])
             self.STORED_ENERGY_SENSOR_DEFINITIONS = data.get("STORED_ENERGY_SENSOR_DEFINITIONS", [])
+            self.VERSION_SENSOR_DEFINITIONS = data.get("VERSION_SENSOR_DEFINITIONS", [])
             self.CYCLE_SENSOR_DEFINITIONS = data.get("CYCLE_SENSOR_DEFINITIONS", [])
 
             # Combine into a single list for polling
@@ -474,6 +476,7 @@ class MarstekCoordinator(DataUpdateCoordinator):
         all_definitions_for_deps = (
             self.EFFICIENCY_SENSOR_DEFINITIONS
             + self.STORED_ENERGY_SENSOR_DEFINITIONS
+            + self.VERSION_SENSOR_DEFINITIONS
             + self.CYCLE_SENSOR_DEFINITIONS
         )
         dependency_keys_set = {
@@ -831,6 +834,9 @@ def get_registers(version: str):
                     ),
                     "STORED_ENERGY_SENSOR_DEFINITIONS": _normalize_section(
                         data.get("STORED_ENERGY_SENSOR_DEFINITIONS")
+                    ),
+                    "VERSION_SENSOR_DEFINITIONS": _normalize_section(
+                        data.get("VERSION_SENSOR_DEFINITIONS")
                     ),
                     "CYCLE_SENSOR_DEFINITIONS": _normalize_section(
                         data.get("CYCLE_SENSOR_DEFINITIONS")
