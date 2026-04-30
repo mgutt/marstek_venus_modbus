@@ -86,8 +86,17 @@
       "ems_version": {
         "name": "EMS-versie"
       },
+      "firmware_version": {
+        "name": "Firmwareversie"
+      },
       "vms_version": {
         "name": "VMS-versie"
+      },
+      "ems_sub_version": {
+        "name": "EMS subversie"
+      },
+      "vns_version": {
+        "name": "VNS-versie"
       },
       "comm_module_firmware": {
         "name": "Communicatiemodule Firmware"
@@ -461,6 +470,29 @@
       "wifi_signal_strength": {
         "name": "WiFi-signaalsterkte"
       },
+      "wifi_ssid": {
+        "name": "WiFi SSID"
+      },
+
+      "bms_temperature_1": {
+        "name": "BMS-temperatuur 1"
+      },
+      "bms_temperature_2": {
+        "name": "BMS-temperatuur 2"
+      },
+      "pack_1_temperature": {
+        "name": "Pak 1 temperatuur"
+      },
+      "pack_2_temperature": {
+        "name": "Pak 2 temperatuur"
+      },
+      "pack_3_temperature": {
+        "name": "Pak 3 temperatuur"
+      },
+      "pack_4_temperature": {
+        "name": "Pak 4 temperatuur"
+      },
+
       "round_trip_efficiency_total": {
         "name": "Totaal rendement"
       },
