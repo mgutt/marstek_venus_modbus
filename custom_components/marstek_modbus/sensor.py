@@ -37,6 +37,7 @@ async def async_setup_entry(
         (MarstekQuotientSensor, coordinator.QUOTIENT_SENSOR_DEFINITIONS),
         (MarstekDifferenceSensor, coordinator.DIFFERENCE_SENSOR_DEFINITIONS),
         (MarstekDifferenceQuotientSensor, coordinator.DIFFERENCE_QUOTIENT_SENSOR_DEFINITIONS),
+        (MarstekProductSensor, coordinator.PRODUCT_SENSOR_DEFINITIONS),
         (MarstekVersionSensor, coordinator.VERSION_SENSOR_DEFINITIONS),
     )
     for entity_cls, definitions in sensor_groups:
@@ -546,6 +547,25 @@ class MarstekDifferenceQuotientSensor(MarstekCalculatedSensor):
         if minuend is None or subtrahend is None or divisor in (None, 0):
             return None
         return round((minuend - subtrahend) / divisor, 2)
+
+
+class MarstekProductSensor(MarstekCalculatedSensor):
+    """Sensor calculating product: factor_a * factor_b.
+
+    Supports an optional max_value in the definition to cap the result.
+    Used for power limits: current_limit * battery_voltage.
+    """
+
+    def calculate_value(self, dep_values: dict):
+        factor_a = dep_values.get("factor_a")
+        factor_b = dep_values.get("factor_b")
+        if factor_a is None or factor_b is None:
+            return None
+        result = round(factor_a * factor_b, 1)
+        max_value = self.definition.get("max_value")
+        if max_value is not None:
+            result = min(result, max_value)
+        return result
 
 
 class MarstekVersionSensor(MarstekCalculatedSensor):
