@@ -80,6 +80,15 @@
       "ems_version": {
         "name": "EMS-Version"
       },
+      "ems_sub_version": {
+        "name": "EMS-Unterversion"
+      },
+      "vns_version": {
+        "name": "VNS-Version"
+      },
+      "firmware_version": {
+        "name": "Firmware-Version"
+      },
       "comm_module_firmware": {
         "name": "Kommunikationsmodul-Firmware"
       },
@@ -451,6 +460,33 @@
       },
       "wifi_signal_strength": {
         "name": "WLAN-Signalstärke"
+      },
+      "wifi_ssid": {
+        "name": "WLAN SSID"
+      },
+      "device_ip": {
+        "name": "Geräte-IP-Adresse"
+      },
+      "gateway_ip": {
+        "name": "Gateway-IP-Adresse"
+      },
+      "bms_temperature_1": {
+        "name": "BMS-Temperatur 1"
+      },
+      "bms_temperature_2": {
+        "name": "BMS-Temperatur 2"
+      },
+      "cell_temperature_1": {
+        "name": "Zelltemperatur 1"
+      },
+      "cell_temperature_2": {
+        "name": "Zelltemperatur 2"
+      },
+      "cell_temperature_3": {
+        "name": "Zelltemperatur 3"
+      },
+      "cell_temperature_4": {
+        "name": "Zelltemperatur 4"
       },
       "round_trip_efficiency_total": {
         "name": "Gesamt-Roundtrip-Effizienz"
