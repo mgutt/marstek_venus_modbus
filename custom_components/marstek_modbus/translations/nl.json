@@ -455,6 +455,18 @@
       "alarm_status": {
         "name": "Alarmstatus"
       },
+      "bms_charge_current_limit": {
+        "name": "BMS Laadstroom Limiet"
+      },
+      "bms_discharge_current_limit": {
+        "name": "BMS Ontlaadstroom Limiet"
+      },
+      "charge_power_limit": {
+        "name": "Laadvermogen Limiet"
+      },
+      "discharge_power_limit": {
+        "name": "Ontlaadvermogen Limiet"
+      },
       "modbus_address": {
         "name": "Modbus-adres"
       },
