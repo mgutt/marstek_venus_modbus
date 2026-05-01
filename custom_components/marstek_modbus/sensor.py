@@ -33,7 +33,7 @@ async def async_setup_entry(
     sensor_groups = (
         (MarstekSensor, coordinator.SENSOR_DEFINITIONS),
         (MarstekEfficiencySensor, coordinator.EFFICIENCY_SENSOR_DEFINITIONS),
-        (MarstekVersionSensor, coordinator.VERSION_SENSOR_DEFINITIONS),
+        (MarstekProductSensor, coordinator.PRODUCT_SENSOR_DEFINITIONS),
         (MarstekStoredEnergySensor, coordinator.STORED_ENERGY_SENSOR_DEFINITIONS),
         (MarstekQuotientSensor, coordinator.QUOTIENT_SENSOR_DEFINITIONS),
         (MarstekDifferenceSensor, coordinator.DIFFERENCE_SENSOR_DEFINITIONS),
@@ -518,31 +518,20 @@ class MarstekQuotientSensor(MarstekCalculatedSensor):
             return None
         return round(dividend / divisor, 2)
 
-
-class MarstekDifferenceSensor(MarstekCalculatedSensor):
-    """Sensor calculating difference: minuend - subtrahend.
-    
-    Used for net power calculations (e.g., grid power = offgrid - inverter).
-    """
-
-    def calculate_value(self, dep_values: dict):
-        minuend = dep_values.get("minuend")
-        subtrahend = dep_values.get("subtrahend")
-        if minuend is None or subtrahend is None:
-            return None
-        return round(minuend - subtrahend, 1)
+        cycles = round(discharge / capacity, 2)
+        self._attr_native_value = cycles
 
 
-class MarstekDifferenceQuotientSensor(MarstekCalculatedSensor):
-    """Sensor calculating difference quotient: (minuend - subtrahend) / divisor.
-    
-    Used for current from power difference and voltage.
-    """
+class MarstekProductSensor(MarstekCalculatedSensor):
+    """Sensor calculating product: factor_a * factor_b, optionally capped by max_value."""
 
     def calculate_value(self, dep_values: dict):
-        minuend = dep_values.get("minuend")
-        subtrahend = dep_values.get("subtrahend")
-        divisor = dep_values.get("divisor")
-        if minuend is None or subtrahend is None or divisor in (None, 0):
+        factor_a = dep_values.get("factor_a")
+        factor_b = dep_values.get("factor_b")
+        if factor_a is None or factor_b is None:
             return None
-        return round((minuend - subtrahend) / divisor, 2)
+        result = factor_a * factor_b
+        max_value = self.definition.get("max_value")
+        if max_value is not None:
+            result = min(result, max_value)
+        return round(result, 1)
