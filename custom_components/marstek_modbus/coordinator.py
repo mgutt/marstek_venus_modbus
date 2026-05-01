@@ -61,6 +61,7 @@ class MarstekCoordinator(DataUpdateCoordinator):
         self.SELECT_DEFINITIONS = []
         self.SWITCH_DEFINITIONS = []
         self.NUMBER_DEFINITIONS = []
+        self.PRODUCT_SENSOR_DEFINITIONS = []
         self.BUTTON_DEFINITIONS = []
         self.EFFICIENCY_SENSOR_DEFINITIONS = []
         self.VERSION_SENSOR_DEFINITIONS = []
@@ -233,6 +234,7 @@ class MarstekCoordinator(DataUpdateCoordinator):
             self.SELECT_DEFINITIONS = data.get("SELECT_DEFINITIONS", [])
             self.SWITCH_DEFINITIONS = data.get("SWITCH_DEFINITIONS", [])
             self.NUMBER_DEFINITIONS = data.get("NUMBER_DEFINITIONS", [])
+            self.PRODUCT_SENSOR_DEFINITIONS = data.get("PRODUCT_SENSOR_DEFINITIONS", [])
             self.BUTTON_DEFINITIONS = data.get("BUTTON_DEFINITIONS", [])
             self.EFFICIENCY_SENSOR_DEFINITIONS = data.get("EFFICIENCY_SENSOR_DEFINITIONS", [])
             self.VERSION_SENSOR_DEFINITIONS = data.get("VERSION_SENSOR_DEFINITIONS", [])
@@ -484,6 +486,7 @@ class MarstekCoordinator(DataUpdateCoordinator):
             + self.QUOTIENT_SENSOR_DEFINITIONS
             + self.DIFFERENCE_SENSOR_DEFINITIONS
             + self.DIFFERENCE_QUOTIENT_SENSOR_DEFINITIONS
+            + self.PRODUCT_SENSOR_DEFINITIONS
         )
         dependency_keys_set = {
             dep_key
@@ -763,6 +766,7 @@ def get_registers(version: str):
       - QUOTIENT_SENSOR_DEFINITIONS
       - DIFFERENCE_SENSOR_DEFINITIONS
       - DIFFERENCE_QUOTIENT_SENSOR_DEFINITIONS
+      - PRODUCT_SENSOR_DEFINITIONS
       - VERSION_SENSOR_DEFINITIONS
 
     If an unknown version is requested, the function falls back to the v1/v2
@@ -846,6 +850,9 @@ def get_registers(version: str):
                     ),
                     "STORED_ENERGY_SENSOR_DEFINITIONS": _normalize_section(
                         data.get("STORED_ENERGY_SENSOR_DEFINITIONS")
+                    ),
+                    "PRODUCT_SENSOR_DEFINITIONS": _normalize_section(
+                        data.get("PRODUCT_SENSOR_DEFINITIONS")
                     ),
                     "QUOTIENT_SENSOR_DEFINITIONS": _normalize_section(
                         data.get("QUOTIENT_SENSOR_DEFINITIONS")
