@@ -34,6 +34,7 @@ async def async_setup_entry(
         (MarstekSensor, coordinator.SENSOR_DEFINITIONS),
         (MarstekEfficiencySensor, coordinator.EFFICIENCY_SENSOR_DEFINITIONS),
         (MarstekVersionSensor, coordinator.VERSION_SENSOR_DEFINITIONS),
+        (MarstekProductSensor, coordinator.PRODUCT_SENSOR_DEFINITIONS),
         (MarstekStoredEnergySensor, coordinator.STORED_ENERGY_SENSOR_DEFINITIONS),
         (MarstekBatteryCycleSensor, coordinator.CYCLE_SENSOR_DEFINITIONS),
     )
@@ -554,3 +555,18 @@ class MarstekVersionSensor(MarstekCalculatedSensor):
             return f"V{ems_str}.{bms_sub}.{bms}"
         _LOGGER.warning("%s unknown version mode '%s'", self._key, mode)
         return None
+
+
+class MarstekProductSensor(MarstekCalculatedSensor):
+    """Sensor calculating product: factor_a * factor_b, optionally capped by max_value."""
+
+    def calculate_value(self, dep_values: dict):
+        factor_a = dep_values.get("factor_a")
+        factor_b = dep_values.get("factor_b")
+        if factor_a is None or factor_b is None:
+            return None
+        result = factor_a * factor_b
+        max_value = self.definition.get("max_value")
+        if max_value is not None:
+            result = min(result, max_value)
+        return round(result, 1)
